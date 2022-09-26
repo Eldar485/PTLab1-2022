@@ -5,6 +5,7 @@ import sys
 from CalcRating import CalcRating
 from TextDataReader import TextDataReader
 from JsonReader import JsonDataReader
+from CalcJsonRating import CalcJsonRating
 
 
 def get_path_from_arguments(args) -> str:
@@ -22,7 +23,7 @@ def main():
     students = reader.read(path)
     print("Students: ", students)
 
-    rating = CalcRating(students).calc()
+    rating = CalcJsonRating(students).calc()
     print("Rating: ", rating)
 
 
