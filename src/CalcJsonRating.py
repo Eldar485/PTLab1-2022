@@ -19,7 +19,8 @@ class CalcJsonRating:
         list1 = list(self.rating.values())
         list1.sort()
         if len(self.data) % 2 == 0:
-            mediana = (list1[int((len(list1) - 1) / 2)] + (list1[int(len(list1) / 2)])) / 2
+            mediana = (list1[int((len(list1) - 1) / 2)] +
+                       (list1[int(len(list1) / 2)])) / 2
         else:
             mediana = (list1[len(list1)]) / 2
         for rate in self.rating:
