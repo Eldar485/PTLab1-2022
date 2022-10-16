@@ -15,7 +15,7 @@ class CalcJsonRating:
         for key in self.data:
             self.rating[key] = 0.0
             for subject in self.data[key]:
-                self.rating[key] += self.data[key][subject]
+                self.rating[key] += subject[1]
         list1 = list(self.rating.values())
         list1.sort()
         if len(self.data) % 2 == 0:

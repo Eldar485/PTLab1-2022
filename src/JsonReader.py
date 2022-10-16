@@ -13,6 +13,16 @@ class JsonDataReader(DataReader):
 
     def read(self, path: str) -> DataType:
         with open(path, encoding='utf-8') as json_file:
-            self.students = json.load(json_file)
-            print(self.students)
+            for line in json_file:
+                if line.strip().endswith(": {"):
+                    self.key = line.strip()[1:line.find(':') - 3]
+                    self.students[self.key] = []
+                if not line.strip().startswith("{") and not line.strip().startswith("}") and not line.strip().endswith(": {") and not line.startswith("}"):
+                    subj, score = line[0:len(line) - 1].split(':', maxsplit=1)
+                    if score[len(score) - 1] == ',':
+                        score = score[0:len(score) - 1]
+                    self.students[self.key].append(
+                        (subj.strip()[1:len(subj) - 5], int(score.strip())))
+
+
         return self.students
